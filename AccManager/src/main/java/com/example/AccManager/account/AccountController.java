@@ -1,4 +1,4 @@
-package com.example.demo.account;
+package com.example.AccManager.account;
 
 import org.springframework.web.bind.annotation.*;
 
