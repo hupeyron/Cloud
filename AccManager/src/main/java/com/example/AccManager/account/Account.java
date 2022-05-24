@@ -1,6 +1,12 @@
 package com.example.AccManager.account;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
 public class Account {
+    @Id
+    String id;
         private String nom;
         private String prenom;
         private int num;
@@ -9,7 +15,8 @@ public class Account {
         public Account() {
         }
 
-        public Account(String nom, String prenom, int num, String risk) {
+        public Account(String id,String nom, String prenom, int num, String risk) {
+            this.id = id;
             this.nom = nom;
             this.prenom = prenom;
             this.num = num;
