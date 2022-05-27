@@ -9,7 +9,6 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/check")
 public class CheckAccountController {
 
-    @Autowired
     private RestTemplate restTemplate;
 
     @GetMapping("/getRiskByID/{id}")
