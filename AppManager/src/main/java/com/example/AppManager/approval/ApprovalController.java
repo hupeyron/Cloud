@@ -41,7 +41,7 @@ public class ApprovalController {
 
     @GetMapping("/add/{nom}")
     public @ResponseBody
-    int addAccount(@PathVariable String nom, @RequestParam(value="reponse", defaultValue = "ACCEPTED") Approval.Reponse reponse){
+    int addApproval(@PathVariable String nom, @RequestParam(value="reponse", defaultValue = "ACCEPTED") Approval.Reponse reponse){
         String id = getRandomInt();
         Approval approval = new Approval(id, nom, reponse);
         try{
@@ -50,6 +50,17 @@ public class ApprovalController {
             throw new RuntimeException("La reponse n'a pas pu être ajouté");
         }
         return 200;
+    }
+
+    @GetMapping("/delete/{id}")
+    public @ResponseBody
+    int deleteApproval(@PathVariable String id){
+        try{
+            ofy().delete().type(Approval.class).id(id);
+            return 200;
+        } catch (Exception e){
+            throw new RuntimeException("Le compte n'a pas pu être ajouté");
+        }
     }
 
     @GetMapping("/test")
