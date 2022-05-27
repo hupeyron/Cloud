@@ -59,13 +59,13 @@ public class ApprovalController {
             ofy().delete().type(Approval.class).id(id);
             return 200;
         } catch (Exception e){
-            throw new RuntimeException("Le compte n'a pas pu être ajouté");
+            throw new RuntimeException("La reponse n'a pas pu être supprimé");
         }
     }
 
     @GetMapping("/test")
     public @ResponseBody
-    int addAccount(){
+    int test(){
         return 200;
     }
 

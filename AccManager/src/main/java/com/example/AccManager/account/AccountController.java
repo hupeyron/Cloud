@@ -32,7 +32,7 @@ public class AccountController {
             ofy().delete().type(Account.class).id(id);
             return 200;
         } catch (Exception e){
-            throw new RuntimeException("Le compte n'a pas pu être ajouté");
+            throw new RuntimeException("Le compte n'a pas pu être supprimé");
         }
     }
 
