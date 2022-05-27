@@ -8,13 +8,13 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/check")
 public class CheckAccountController {
 
-    private RestTemplate restTemplate;
+        private RestTemplate restTemplate;
 
     @GetMapping("/getRiskByID/{id}")
     public @ResponseBody
     Object getRiskByID(@PathVariable String id){
         try{
-            String url = "https://cloud-350809.ew.r.appspot.com/account/getbyID/{id}";
+            String url = "https://cloud-350809.ew.r.appspot.com/account/getRiskByID/{id}";
             return this.restTemplate.getForObject(url, Object.class, id);
         } catch (Exception e){
             throw new RuntimeException("Erreur lors de la recherche du risk");
