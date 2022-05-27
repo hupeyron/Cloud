@@ -25,6 +25,17 @@ public class AccountController {
         return 200;
     }
 
+    @GetMapping("/delete/{id}")
+    public @ResponseBody
+    int deleteAccount(@PathVariable String id){
+        try{
+            ofy().delete().type(Account.class).id(id);
+            return 200;
+        } catch (Exception e){
+            throw new RuntimeException("Le compte n'a pas pu être ajouté");
+        }
+    }
+
     @GetMapping("/getAll")
     public @ResponseBody
     Iterable<Account> getAll(){

@@ -23,9 +23,17 @@ public class Account {
             this.risk = risk;
         }
 
-        public String getNom() {
-            return nom;
+        public String getId() {
+            return id;
         }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getNom() {
+                return nom;
+            }
 
         public String getPrenom() {
             return prenom;
