@@ -63,9 +63,9 @@ public class AccountController {
         return account;
     }
 
-    @GetMapping("/modify/{id}/{num}")
+    @GetMapping("/modify/{id}")
     public @ResponseBody
-    Account modifyNum(@PathVariable String id, @PathVariable int num){
+    Account modifyNum(@PathVariable String id, @RequestParam(value="num", defaultValue = "8000") int num){
         Account account;
         try{
             account = ofy().load().type(Account.class).id(id).now();
