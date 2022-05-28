@@ -22,14 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="605873a3-576c-41ae-8008-312af5f24db4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../AccManager/src/test/java/com/example/AccManager/AccountTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AccManager/src/test/java/com/example/AccManager/AccountTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AppManager/src/test/java/com/example/AppManager/ApprovalTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AppManager/src/test/java/com/example/AppManager/ApprovalTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/CheckAccount/check/CheckAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/CheckAccount/check/CheckAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/CheckAccount/CheckTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/CheckAccount/CheckTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../clientGuzzle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../clientGuzzle/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="605873a3-576c-41ae-8008-312af5f24db4" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

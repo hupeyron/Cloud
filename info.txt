@@ -25,6 +25,8 @@ Pour déployer, nous avons utilisé les commandes suivantes :
 - gcloud config set project Nom (qui permet de choisir quelle projet sur GAE on souhaite utiliser)
 - mvn appengine:deploy (pour déployer sur GAE (celle donné dans le cours ne fonctionnait pas))
 
+!!!
+Des Screens sont présents dans le dossier screen pour prouver que cela marche
 
 Erreurs:
 Chaque fonction qui utilise un restTemplate pour faire communiquer 2 services ne fonctionnent pas. Il ya une erreur 500,
