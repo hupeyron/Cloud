@@ -3,33 +3,40 @@ package com.example.LoanApproval.loan;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Objects;
+
 @RestController
 @RequestMapping("/loan")
 public class LoanController {
 
     private RestTemplate restTemplate;
 
-    enum Reponse {
-        ACCEPTED,
+    enum Reponse{
+        APPROVED,
         REFUSED,
     }
 
-    @GetMapping("/demande/{nom}/{somme}")
+    @GetMapping("/demande/{id}/{somme}")
     public @ResponseBody
-    Reponse addAccount(@PathVariable String nom, @PathVariable float somme){
-        String accUrl = "https://cloud-350809.ew.r.appspot.com/account/getRiskByName/{nom}";
-        String appUrl = "https://cloud-350809.ew.r.appspot.com/approval/getbyID/";
-        Object risk = this.restTemplate.getForObject(accUrl, Object.class, nom);
-        risk = risk.toString();
+    String addAccount(@PathVariable String id, @PathVariable float somme){
+        String accUrl = "https://cloud-350809.ew.r.appspot.com/account/";
+        String appUrl = "https://cloud-350809.ew.r.appspot.com/approval/";
+        String risk = Objects.requireNonNull(this.restTemplate.getForObject(accUrl + "getbyID/{id}", Object.class, id)).toString();
+
         if(somme < 10000){
             if(risk == "high"){
-                //si high alors appel appmanager lister les approval et regarder si on a un approval pour le client qui veut un crédit
+                return "refused";
             }
-            //donner la somme au demandeur
-            return Reponse.ACCEPTED;
+            this.restTemplate.getForObject(accUrl+"edit/{nom}/{montant}", Object.class, id, somme);
+            return "approved";
         }
-        //appel AppManager pour savoir réponse
-        //si accepted compte crédité et approuved retourné
-        return Reponse.ACCEPTED;
+        String rep = Objects.requireNonNull(this.restTemplate.getForObject(appUrl + "/getbyID/{nom}", Object.class, id)).toString();
+        if(rep.equals(Reponse.APPROVED)){
+            this.restTemplate.getForObject(accUrl+"edit/{nom}/{montant}", Object.class, id, somme);
+            return "accepted";
+        }else{
+            return "refused";
+        }
     }
+
 }

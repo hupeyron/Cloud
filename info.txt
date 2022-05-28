@@ -2,7 +2,7 @@ PROJET CLOUD :
 
 Bauzil Tristan : AccManager, AppManager, CheckAccount, déploiement
 
-Peyron Hugo : LoanApproval, modifications sur les autres services
+Peyron Hugo : LoanApproval, clients Guzzle
 
 Les urls : // Pour les id : tester avec 123123 ou faire add puis getAll et prendre un id
 - AccManager : "https://cloud-350809.ew.r.appspot.com/account/"  (test ou add/{nom} ou delete/{id} ou getAll ou getbyID/{id})
