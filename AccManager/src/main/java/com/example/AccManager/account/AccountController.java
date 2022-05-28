@@ -12,7 +12,7 @@ public class AccountController {
 
     @GetMapping("/add/{nom}")
     public @ResponseBody
-    int addAccount(@PathVariable String nom, @RequestParam(value="prenom", defaultValue = "PRENOM") String prenom,
+    String addAccount(@PathVariable String nom, @RequestParam(value="prenom", defaultValue = "PRENOM") String prenom,
                       @RequestParam(value="num", defaultValue = "0") int num, @RequestParam(value="risk", defaultValue = "...") String risk){
         String id = getRandomInt();
         Account account = new Account(id, nom, prenom, num, risk);
@@ -21,16 +21,15 @@ public class AccountController {
         } catch (Exception e){
             throw new RuntimeException("Le compte n'a pas pu être ajouté");
         }
-
-        return 200;
+        return id;
     }
 
     @GetMapping("/delete/{id}")
     public @ResponseBody
-    int deleteAccount(@PathVariable String id){
+    String deleteAccount(@PathVariable String id){
         try{
             ofy().delete().type(Account.class).id(id);
-            return 200;
+            return id;
         } catch (Exception e){
             throw new RuntimeException("Le compte n'a pas pu être supprimé");
         }
@@ -45,7 +44,6 @@ public class AccountController {
         } catch (Exception e){
             throw new RuntimeException("Erreur d'affichages des comptes");
         }
-
         return accounts;
     }
 
@@ -62,6 +60,20 @@ public class AccountController {
             throw new RuntimeException("Erreur lors de la recherche du compte");
         }
 
+        return account;
+    }
+
+    @GetMapping("/modify/{id}/{num}")
+    public @ResponseBody
+    Account modifyNum(@PathVariable String id, @PathVariable int num){
+        Account account;
+        try{
+            account = ofy().load().type(Account.class).id(id).now();
+            account.setNum(num);
+            ofy().save().entity(account).now();
+        } catch (Exception e){
+            throw new RuntimeException("Erreur lors de la modification du montant du compte");
+        }
         return account;
     }
 
