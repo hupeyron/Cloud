@@ -20,8 +20,8 @@ public class CheckTests {
 		assertThat(body).isEqualTo("123123");
 	}*/
 
-    @Test
+    /*@Test
     public void testTest(){
         assertEquals("200", restTemplate.getForObject("http://localhost:8080/check/test", String.class));
-    }
+    }*/
 }

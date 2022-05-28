@@ -24,3 +24,9 @@ Pour déployer, nous avons utilisé les commandes suivantes :
 - gcloud auth login (permet de se connecté à GAE)
 - gcloud config set project Nom (qui permet de choisir quelle projet sur GAE on souhaite utiliser)
 - mvn appengine:deploy (pour déployer sur GAE (celle donné dans le cours ne fonctionnait pas))
+
+
+Erreurs:
+Chaque fonction qui utilise un restTemplate pour faire communiquer 2 services ne fonctionnent pas. Il ya une erreur 500,
+même quand j'utilise 2 projets GAE (1 pour le CheckAccount et l'autre pour le Account par exemple). Les URLs sont bonnes
+et pourtant cela ne fonctionne pas. (Les 2 sont déployé en même temps et fonctionne chacun de leurs côtés)
