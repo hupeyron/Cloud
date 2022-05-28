@@ -18,18 +18,18 @@ public class LoanController {
     public @ResponseBody
     Reponse addAccount(@PathVariable String nom, @PathVariable float somme){
         String accUrl = "https://cloud-350809.ew.r.appspot.com/account/getRiskByName/{nom}";
+        String appUrl = "https://cloud-350809.ew.r.appspot.com/approval/getbyID/";
         Object risk = this.restTemplate.getForObject(accUrl, Object.class, nom);
         risk = risk.toString();
         if(somme < 10000){
             if(risk == "high"){
-                //si high alors appel appmanager
+                //si high alors appel appmanager lister les approval et regarder si on a un approval pour le client qui veut un crédit
             }
             //donner la somme au demandeur
             return Reponse.ACCEPTED;
         }
         //appel AppManager pour savoir réponse
         //si accepted compte crédité et approuved retourné
-
-
+        return Reponse.ACCEPTED;
     }
 }
