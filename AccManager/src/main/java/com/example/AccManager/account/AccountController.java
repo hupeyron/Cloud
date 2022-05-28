@@ -65,14 +65,14 @@ public class AccountController {
         return account;
     }
 
-    @GetMapping("/getRiskByName/{Name}")
+    @GetMapping("/getRiskByID/{id}")
     public @ResponseBody
-    String getRiskByID(@PathVariable String Name){
+    String getRiskByID(@PathVariable String id){
         Iterable<Account> accounts;
         try{
                 accounts = ofy().load().type(Account.class);
             for (Account a: accounts) {
-                if(a.getNom() == Name){
+                if(a.getId() == id){
                     return a.getRisk();
                 }
             }

@@ -39,6 +39,21 @@ public class ApprovalController {
         return approval;
     }
 
+    @GetMapping("/getbyName/{nom}")
+    public @ResponseBody
+    Approval getByName(@PathVariable String nom){
+        Approval approval;
+        try{
+            approval = ofy().load().type(Approval.class).filter("nom =", nom).first().now();
+            if (approval == null){
+                throw new RuntimeException("L'id saisi n'est pas correct");
+            }
+            return approval;
+        } catch (Exception e){
+            throw new RuntimeException("Erreur lors de la recherche du compte");
+        }
+    }
+
     @GetMapping("/add/{nom}")
     public @ResponseBody
     String addApproval(@PathVariable String nom, @RequestParam(value="reponse", defaultValue = "ACCEPTED") Approval.Reponse reponse){
