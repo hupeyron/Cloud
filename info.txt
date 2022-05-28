@@ -1,0 +1,26 @@
+PROJET CLOUD :
+
+Bauzil Tristan : AccManager, AppManager, CheckAccount, déploiement
+
+Peyron Hugo : LoanApproval, modifications sur les autres services
+
+Les urls : // Pour les id : tester avec 123123 ou faire add puis getAll et prendre un id
+- AccManager : "https://cloud-350809.ew.r.appspot.com/account/"  (test ou add/{nom} ou delete/{id} ou getAll ou getbyID/{id})
+- AppManager : "https://cloud-350809.ew.r.appspot.com/approval/" (test ou getAll ou getbyID/{id} ou add/{nom} ou delete/{id})
+- CheckAccount : "https://cloud-350809.ew.r.appspot.com/check/"  (test ou getRiskByID/{id})
+- LoanApproval : "https://cloud-350809.ew.r.appspot.com/loan/"   (demande/{nom}/{somme})
+
+Les 4 Services : AccManager, AppManager, CheckAccount et LoanApproval ont la même structure
+-> dans src/main/java/com/example/NomDuService, il y a la classe Application qui permet de lancer le service, pour certains le Objectify Config
+qui permet d'utiliser objectify et d'insérer/ supprimer/voir des données sur le datastore de GAE. Puis il y a le servlet initializer qui permet
+de construire l'application SpringBoot pour l'initialiser.
+
+Les controllers et classes métiers se trouvent dans un même dossier présent dans src/main/java/com/example/NomDuService.
+-> La classe métier défini la structure de l'objet qui sera ajouter sur GAE, et le controller permet de définir les routes par lesquelles
+on aura accès une fois l'application déployée. Chaque fonction possède une route différente et réalise différentes actions.
+
+Pour déployer, nous avons utilisé les commandes suivantes :
+
+- gcloud auth login (permet de se connecté à GAE)
+- gcloud config set project Nom (qui permet de choisir quelle projet sur GAE on souhaite utiliser)
+- mvn appengine:deploy (pour déployer sur GAE (celle donné dans le cours ne fonctionnait pas))
