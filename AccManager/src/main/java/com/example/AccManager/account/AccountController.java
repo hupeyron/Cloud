@@ -65,6 +65,23 @@ public class AccountController {
         return account;
     }
 
+    @GetMapping("/getRiskByName/{Name}")
+    public @ResponseBody
+    String getRiskByID(@PathVariable String Name){
+        Iterable<Account> accounts;
+        try{
+                accounts = ofy().load().type(Account.class);
+            for (Account a: accounts) {
+                if(a.getNom() == Name){
+                    return a.getRisk();
+                }
+            }
+        } catch (Exception e){
+            throw new RuntimeException("Erreur lors de la recherche du compte");
+        }
+        return null;
+    }
+
     @GetMapping("/test")
     public @ResponseBody
     int addAccount(){
