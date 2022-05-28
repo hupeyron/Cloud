@@ -41,15 +41,15 @@ public class ApprovalController {
 
     @GetMapping("/add/{nom}")
     public @ResponseBody
-    int addApproval(@PathVariable String nom, @RequestParam(value="reponse", defaultValue = "ACCEPTED") Approval.Reponse reponse){
+    String addApproval(@PathVariable String nom, @RequestParam(value="reponse", defaultValue = "ACCEPTED") Approval.Reponse reponse){
         String id = getRandomInt();
         Approval approval = new Approval(id, nom, reponse);
         try{
             ofy().save().entity(approval).now();
+            return approval.getId();
         } catch (Exception e){
             throw new RuntimeException("La reponse n'a pas pu être ajouté");
         }
-        return 200;
     }
 
     @GetMapping("/delete/{id}")

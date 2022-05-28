@@ -14,7 +14,7 @@ public class CheckAccountController {
     public @ResponseBody
     Object getRiskByID(@PathVariable String id){
         try{
-            String url = "https://cloud-350809.ew.r.appspot.com/check/getRiskByID/{id}";
+            String url = "https://cloud-350809.ew.r.appspot.com/account/getRiskByID/{id}";
             return this.restTemplate.getForObject(url, Object.class, id);
         } catch (Exception e){
             throw new RuntimeException("Erreur lors de la recherche du risk");
